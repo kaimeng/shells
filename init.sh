@@ -29,5 +29,3 @@ chmod 755 /etc/sysconfig/modules/ipvs.modules && bash /etc/sysconfig/modules/ipv
 
 swapoff -a
 echo "vm.swappiness = 0">> /etc/sysctl.conf
-
-echo "
