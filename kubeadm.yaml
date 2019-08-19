@@ -31,7 +31,7 @@ etcd:
     dataDir: /var/lib/etcd
 imageRepository: mirrorgooglecontainers
 kind: ClusterConfiguration
-kubernetesVersion: v1.14.0
+kubernetesVersion: v1.15.2
 networking:
   dnsDomain: cluster.local
   serviceSubnet: 10.96.0.0/12
