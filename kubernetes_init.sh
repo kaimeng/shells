@@ -5,10 +5,7 @@ hostnamectl set-hostname $1
 ip=`hostname -I`
 echo $ip $1 >> /etc/hosts
 
-# 设置的代理
-echo "export http_proxy=http://10.136.21.76:1080" >> ~/.bash_profile
-echo "export https_proxy=\$http_proxy" >> ~/.bash_profile
-source ~/.bash_profile
+
 
 # 禁用防火墙
 systemctl stop firewalld
