@@ -23,3 +23,6 @@ helm install stable/nginx-ingress -n nginx-ingress --namespace ingress-nginx -f 
 
 cd ~/shells
 helm install stable/kubernetes-dashboard -n kubernetes-dashboard --namespace kube-system -f kubernetes-dashboard.yaml
+
+cd ~/shells
+helm install stable/metrics-server -n metrics-server --namespace kube-system -f metrics-server.yaml
