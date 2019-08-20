@@ -102,3 +102,4 @@ yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 systemctl enable --now kubelet
 
 systemctl enable kubelet.service
+systemctl enable docker.service
