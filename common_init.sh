@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# 在master 节点安装
+
+cd ~
 curl -O https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz
 tar -zxvf helm-v2.14.3-linux-amd64.tar.gz
 cd linux-amd64/
