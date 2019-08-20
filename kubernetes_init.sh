@@ -34,6 +34,8 @@ modprobe -- nf_conntrack_ipv4
 EOF
 chmod 755 /etc/sysconfig/modules/ipvs.modules && bash /etc/sysconfig/modules/ipvs.modules && lsmod | grep -e ip_vs -e nf_conntrack_ipv4
 
+yum install -y ipset
+
 swapoff -a
 sed -i 's/^\/dev\/mapper\/centos-swap/#\/dev\/mapper\/centos-swap/' /etc/fstab
 
@@ -63,7 +65,8 @@ cat > /etc/docker/daemon.json <<EOF
   "storage-driver": "overlay2",
   "storage-opts": [
     "overlay2.override_kernel_check=true"
-  ]
+  ],
+  "registry-mirrors": ["https://uwbqrb9q.mirror.aliyuncs.com"]
 }
 EOF
 
@@ -97,3 +100,5 @@ EOF
 
 yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 systemctl enable --now kubelet
+
+systemctl enable kubelet.service
