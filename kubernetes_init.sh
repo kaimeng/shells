@@ -3,8 +3,8 @@
 # 设置hostname
 hostnamectl set-hostname $1
 ip=`hostname -I`
-echo $ip $1 >> /etc/hosts
-
+ip_array=(${string// / })
+echo ${ip_array[0]} $1 >> /etc/hosts
 
 
 # 禁用防火墙
