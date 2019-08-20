@@ -69,18 +69,17 @@ EOF
 
 mkdir -p /etc/systemd/system/docker.service.d
 
-# Restart Docker
-systemctl daemon-reload
-systemctl restart docker
-
 # 设置 docker 代理
-mkdir -p /etc/systemd/system/docker.service.d
 cat > /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF
-[Service] Environment="HTTP_PROXY=http://10.136.21.76:1080" "NO_PROXY=localhost,127.0.0.1"
+[Service]
+Environment="HTTP_PROXY=http://10.136.21.76:1080" "NO_PROXY=localhost,127.0.0.1"
 EOF
 cat > /etc/systemd/system/docker.service.d/https-proxy.conf <<EOF
-[Service] Environment="HTTPS_PROXY=http://10.136.21.76:1080" "NO_PROXY=localhost,127.0.0.1"
+[Service]
+Environment="HTTPS_PROXY=http://10.136.21.76:1080" "NO_PROXY=localhost,127.0.0.1"
 EOF
+
+# Restart Docker
 systemctl daemon-reload
 systemctl restart docker
 
