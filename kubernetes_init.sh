@@ -3,7 +3,7 @@
 # 设置hostname
 hostnamectl set-hostname $1
 ip=`hostname -I`
-ip_array=(${string// / })
+ip_array=(${ip// / })
 echo ${ip_array[0]} $1 >> /etc/hosts
 
 
