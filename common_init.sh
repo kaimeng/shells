@@ -15,11 +15,12 @@ kubectl create -f helm-rbac.yaml
 helm init --service-account tiller --skip-refresh
 helm repo add stable http://mirror.azure.cn/kubernetes/charts
 
-# 安装 nginx-ingress
 kubectl label node node1 node-role.kubernetes.io/edge=
 helm repo update
-cd ~/shells
-helm install stable/nginx-ingress -n nginx-ingress --namespace ingress-nginx -f ingress-nginx.yaml
+
+# 安装 nginx-ingress
+#cd ~/shells
+#helm install stable/nginx-ingress -n nginx-ingress --namespace ingress-nginx -f ingress-nginx.yaml
 
 cd ~/shells
 helm install stable/kubernetes-dashboard -n kubernetes-dashboard --namespace kube-system -f kubernetes-dashboard.yaml
