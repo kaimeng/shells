@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+proxyaddress=10.136.41.21:1087
+
 # 设置hostname
 hostnamectl set-hostname $1
 ip=`hostname -I`
@@ -75,11 +77,11 @@ mkdir -p /etc/systemd/system/docker.service.d
 # 设置 docker 代理
 cat > /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF
 [Service]
-Environment="HTTP_PROXY=http://10.136.21.76:1080" "NO_PROXY=localhost,127.0.0.1"
+Environment="HTTP_PROXY=http://$proxyaddress" "NO_PROXY=localhost,127.0.0.1"
 EOF
 cat > /etc/systemd/system/docker.service.d/https-proxy.conf <<EOF
 [Service]
-Environment="HTTPS_PROXY=http://10.136.21.76:1080" "NO_PROXY=localhost,127.0.0.1"
+Environment="HTTPS_PROXY=http://$proxyaddress" "NO_PROXY=localhost,127.0.0.1"
 EOF
 
 # Restart Docker
@@ -98,7 +100,7 @@ repo_gpgcheck=1
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOF
 
-yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+yum install -y kubelet-1.16.0-0 kubeadm-1.16.0-0 kubectl-1.16.0-0 --disableexcludes=kubernetes
 systemctl enable --now kubelet
 
 systemctl enable kubelet.service
