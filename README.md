@@ -5,7 +5,7 @@ git clone https://github.com/kaimeng/shells.git
 
 1. 如果系统无法直接连接网络，先设置系统代理 proxy.sh
 2. 运行 sh kubernetes_init.sh nodeX (nodeX 是当前节点名)
-3. 如果是 master 节点，运行 kubeadm_init.sh
+3. 如果是 master 节点，运行 sh kubeadm_init.sh
 
 4. 新节点加入 cluser
 kubeadm join 10.136.21.110:6443 --token 8p2jg8.drolmtbcvwmad1cd \
